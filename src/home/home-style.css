@@ -1,0 +1,10 @@
+.mainMap {
+    height: 500px;
+}
+
+#root div {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
