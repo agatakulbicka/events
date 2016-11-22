@@ -1,4 +1,5 @@
 import React from 'react';
+import './place-style.css'
 
 export default (props) =>
-    <div>{props.text}</div>
+    <div className="mapPointer">{props.text}</div>

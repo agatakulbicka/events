@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, FormGroup, ControlLabel, FormControl, Col} from 'react-bootstrap'
+import {Row, FormGroup, ControlLabel, FormControl, Col} from 'react-bootstrap'
 import GoogleMap from 'google-map-react'
 import Place from '../place/Place'
 import './home-style.css'
@@ -11,11 +11,13 @@ const mapStateToProps = (state) => ({
     cities: state.eventsCitiesData.cities,
     fetchingCities: state.eventsCitiesData.fetchingCities,
     fetchingEvents: state.eventsCitiesData.fetchingEvents,
-    currentCity: state.eventsCitiesData.currentCity
+    currentCity: state.eventsCitiesData.currentCity,
+    cityLat: state.eventsCitiesData.cityLat,
+    cityLng: state.eventsCitiesData.cityLng
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    showEventsInCity: (currentCity) => dispatch(showEventsInCity(currentCity))
+    showEventsInCity: (currentCity, cityLat,cityLng) => dispatch(showEventsInCity(currentCity, cityLat, cityLng))
 })
 
 class Home extends React.Component {
@@ -26,7 +28,9 @@ class Home extends React.Component {
             fetchingCities,
             fetchingEvents,
             showEventsInCity,
-            currentCity
+            currentCity,
+            cityLat,
+            cityLng
         }=this.props
         console.log(this.props.currentCity, 'miasto');
         return (
@@ -38,9 +42,13 @@ class Home extends React.Component {
                                 <ControlLabel>Wybierz interesujące Cię miasto: </ControlLabel>
                                 {fetchingCities ? 'Proszę czekać, trwa ładowanie danych' :
                                     <FormControl componentClass="select" placeholder="select"
-                                                 onChange={(event =>showEventsInCity(event.target.value))}>
+                                                 data-lat="test"
+                                                 onChange={(event) =>showEventsInCity(event.target.value,
+                                                     event.target.options[event.target.selectedIndex].dataset.lat,
+                                                     event.target.options[event.target.selectedIndex].dataset.lng)}>
                                         {cities.map((city) =>
-                                            <option value={city.cityName} key={city.id}>
+                                            <option value={city.cityName} key={city.id}
+                                                    data-lat={city.coordinates.lat} data-lng={city.coordinates.lng}>
                                                 {city.cityName}
                                             </option>
                                         )}
@@ -54,15 +62,23 @@ class Home extends React.Component {
                     <Col md={12}>
                         {fetchingEvents ? "Ładuję dane mapy, proszę czekać..." :
                             <div className="mainMap">
+
                                 <GoogleMap
                                     bootstrapURLKeys={{
                                         key: 'AIzaSyCJSyocAtUnWSKhjyqZlJtmaf_afdJcOkA',
                                         language: 'pl'
                                     }}
-                                    center={[54.3434247232928, 18.52667212486267]}
-                                    zoom={11}
-                                >
-                                    <Place text={"A"}/>
+                                    center={[parseFloat(cityLat), parseFloat(cityLng)]}
+                                    zoom={11}>
+
+                                    {events.filter((singleEvent)=> singleEvent.cityName === currentCity)
+                                        .map((singleEvent) =>
+                                            <Place text={"A"}
+                                                   className="mapPointer"
+                                                   key={singleEvent.id}
+                                                   lat={singleEvent.coordinates.lat}
+                                                   lng={singleEvent.coordinates.lng}
+                                            />)}
                                 </GoogleMap>
                             </div>
                         }

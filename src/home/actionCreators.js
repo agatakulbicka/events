@@ -3,9 +3,9 @@ import {
     RECEIVE_EVENTS,
     REQUEST_CITIES,
     RECEIVE_CITIES,
-SHOW_EVENTS_IN_CITY
+    SHOW_EVENTS_IN_CITY
 }
-from './actionTypes'
+    from './actionTypes'
 
 import fetch from 'isomorphic-fetch';
 
@@ -36,7 +36,6 @@ function receiveCities(cities) {
 }
 
 
-
 export function fetchEvents() {
     return function (dispatch) {
         dispatch(requestEvents());
@@ -57,9 +56,11 @@ export function fetchCities() {
 
 }
 
-export function showEventsInCity(currentCity){
-    return{
+export function showEventsInCity(currentCity, cityLat, cityLng) {
+    return {
         type: SHOW_EVENTS_IN_CITY,
-        currentCity: currentCity
+        currentCity: currentCity,
+        cityLat: cityLat,
+        cityLng: cityLng
     }
 }

@@ -3,7 +3,7 @@ import {
     RECEIVE_EVENTS,
     REQUEST_CITIES,
     RECEIVE_CITIES,
-SHOW_EVENTS_IN_CITY
+    SHOW_EVENTS_IN_CITY
 }
     from './actionTypes'
 
@@ -12,7 +12,9 @@ const initialState = {
     cities: [],
     fetchingEvents: false,
     fetchingCities: false,
-    currentCity: "Olsztyn"
+    currentCity: "Olsztyn",
+    cityLat: 53.77595689376808,
+    cityLng: 20.476584434509277
 }
 
 export default (state = initialState, action) => {
@@ -37,7 +39,9 @@ export default (state = initialState, action) => {
             });
         case SHOW_EVENTS_IN_CITY:
             return Object.assign({}, state, {
-                currentCity: action.currentCity
+                currentCity: action.currentCity,
+                cityLat: action.cityLat,
+                cityLng: action.cityLng
             });
         default:
             return state
