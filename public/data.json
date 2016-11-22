@@ -1,0 +1,92 @@
+[
+  {
+    "id": 0,
+    "title": "Django Girls Olsztyn II",
+    "category": "programowanie",
+    "target": "women",
+    "city": "Olsztyn",
+    "adress": "Cowork, kajki 15",
+    "date": "13-12-2017",
+    "hour": "13:50",
+    "payment:": "free",
+    "coordinates": {
+      "lat": 53.774549358224384,
+      "lng": 20.481900572776794
+    }
+  },
+  {
+    "id": 1,
+    "title": "Django Girls Olsztyn III",
+    "category": "programowanie",
+    "target": "women",
+    "city": "Olsztyn",
+    "adress": "Gdzieśtam indziej",
+    "date": "13-12-2017",
+    "hour": "13:50",
+    "payment:": "free",
+    "coordinates": {
+      "lat": 53.77438450863147,
+      "lng": 20.463709831237793
+    }
+  },
+  {
+    "id": 2,
+    "title": "Karotki I",
+    "category": "programowanie",
+    "target": "women",
+    "city": "Gdańsk",
+    "adress": "Gdzieśtam indziej",
+    "date": "13-12-2017",
+    "hour": "13:50",
+    "payment:": "free",
+    "coordinates": {
+      "lat": 54.32853723970533,
+      "lng": 18.527755737304688
+    }
+  },
+  {
+    "id": 3,
+    "title": "Karotki II",
+    "category": "programowanie",
+    "target": "women",
+    "city": "Gdańsk",
+    "adress": "Gdzieśtam indziej",
+    "date": "13-12-2017",
+    "hour": "13:50",
+    "payment:": "free",
+    "coordinates": {
+      "lat": 54.26001043274683,
+      "lng": 18.702850341796875
+    }
+  },
+  {
+    "id": 4,
+    "title": "Włoclowe 2",
+    "category": "programowanie",
+    "target": "women",
+    "city": "Wrocław",
+    "adress": "Gdzieśtam indziej",
+    "date": "13-12-2017",
+    "hour": "13:50",
+    "payment:": "free",
+    "coordinates": {
+      "lat": 51.11005617597957,
+      "lng": 17.039655447006226
+    }
+  },
+  {
+    "id": 5,
+    "title": "Włoclowe 4",
+    "category": "programowanie",
+    "target": "women",
+    "city": "Wrocław",
+    "adress": "Gdzieśtam indziej",
+    "date": "13-12-2017",
+    "hour": "13:50",
+    "payment:": "free",
+    "coordinates": {
+      "lat": 51.10678243833654,
+      "lng": 17.036479711532593
+    }
+  }
+]
