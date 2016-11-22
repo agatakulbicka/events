@@ -1,0 +1,5 @@
+export const REQUEST_EVENTS = 'home/REQUEST_EVENTS'
+export const RECEIVE_EVENTS = 'home/RECEIVE_EVENTS'
+export const REQUEST_CITIES = 'home/REQUEST_CITIES'
+export const RECEIVE_CITIES = 'home/RECEIVE_CITIES'
+export const SHOW_EVENTS_IN_CITY = 'home/SHOW_EVENTS_IN_CITY'
