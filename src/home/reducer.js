@@ -12,7 +12,7 @@ const initialState = {
     cities: [],
     fetchingEvents: false,
     fetchingCities: false,
-    currentCity: "Olsztyn",
+    currentCity: '',
     cityLat: 53.77595689376808,
     cityLng: 20.476584434509277
 }

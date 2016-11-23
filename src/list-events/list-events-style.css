@@ -1,0 +1,23 @@
+.flexbox {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.thumb-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.thumb-col {
+    display: flex;
+    padding-left:5px;
+    padding-right:5px;
+}
+
+.thumb-col .thumbnail {
+    padding: 20px;
+}
+
+.thumb-col .thumbnail {
+    padding: 20px;
+}

@@ -9,10 +9,12 @@
     "date": "13-12-2017",
     "hour": "13:50",
     "payment:": "free",
+    "img": "/data/events-img/e-img_0.png",
     "coordinates": {
       "lat": 53.774549358224384,
       "lng": 20.481900572776794
-    }
+    },
+    "description": "Gallia est omnis divisa in partes tres, quarum unam incolunt Belgae, aliam Aquitani, tertiam qui ipsorum lingua Celtae, nostra Galli appellantur. 2 Hi omnes lingua, institutis, legibus inter se differunt. Gallos ab Aquitanis Garumna flumen, a Belgis Matrona et Sequana dividit. 3 Horum omnium fortissimi sunt Belgae, propterea quod a cultu atque humanitate provinciae longissime absunt, minimeque ad eos mercatores saepe commeant atque ea quae ad effeminandos animos pertinent important, 4 proximique sunt Germanis, qui trans Rhenum incolunt, quibuscum continenter bellum gerunt."
   },
   {
     "id": 1,
@@ -24,10 +26,12 @@
     "date": "13-12-2017",
     "hour": "13:50",
     "payment:": "free",
+    "img": "/data/events-img/e-img_0.png",
     "coordinates": {
       "lat": 53.77438450863147,
       "lng": 20.463709831237793
-    }
+    },
+    "description": "Gallia est omnis divisa in partes tres, quarum unam incolunt Belgae, aliam Aquitani, tertiam qui ipsorum lingua Celtae, nostra Galli appellantur. 2 Hi omnes lingua, institutis, legibus inter se differunt. Gallos ab Aquitanis Garumna flumen, a Belgis Matrona et Sequana dividit. 3 Horum omnium fortissimi sunt Belgae, propterea quod a cultu atque humanitate provinciae longissime absunt, minimeque ad eos mercatores saepe commeant atque ea quae ad effeminandos animos pertinent important, 4 proximique sunt Germanis, qui trans Rhenum incolunt, quibuscum continenter bellum gerunt."
   },
   {
     "id": 2,
@@ -39,10 +43,12 @@
     "date": "13-12-2017",
     "hour": "13:50",
     "payment:": "free",
+    "img": "/data/events-img/e-img_0.png",
     "coordinates": {
       "lat": 54.32853723970533,
       "lng": 18.527755737304688
-    }
+    },
+    "description": "Gallia est omnis divisa in partes tres, quarum unam incolunt Belgae, aliam Aquitani, tertiam qui ipsorum lingua Celtae, nostra Galli appellantur. 2 Hi omnes lingua, institutis, legibus inter se differunt. Gallos ab Aquitanis Garumna flumen, a Belgis Matrona et Sequana dividit. 3 Horum omnium fortissimi sunt Belgae, propterea quod a cultu atque humanitate provinciae longissime absunt, minimeque ad eos mercatores saepe commeant atque ea quae ad effeminandos animos pertinent important, 4 proximique sunt Germanis, qui trans Rhenum incolunt, quibuscum continenter bellum gerunt."
   },
   {
     "id": 3,
@@ -54,14 +60,16 @@
     "date": "13-12-2017",
     "hour": "13:50",
     "payment:": "free",
+    "img": "data/events-img/e-img_0.png",
     "coordinates": {
       "lat": 54.26001043274683,
       "lng": 18.702850341796875
-    }
+    },
+    "description": "Gallia est omnis divisa in partes tres, quarum unam incolunt Belgae, aliam Aquitani, tertiam qui ipsorum lingua Celtae, nostra Galli appellantur. 2 Hi omnes lingua, institutis, legibus inter se differunt. Gallos ab Aquitanis Garumna flumen, a Belgis Matrona et Sequana dividit. 3 Horum omnium fortissimi sunt Belgae, propterea quod a cultu atque humanitate provinciae longissime absunt, minimeque ad eos mercatores saepe commeant atque ea quae ad effeminandos animos pertinent important, 4 proximique sunt Germanis, qui trans Rhenum incolunt, quibuscum continenter bellum gerunt."
   },
   {
     "id": 4,
-    "title": "Włoclowe 2",
+    "title": "Wroclowe 2",
     "category": "programowanie",
     "target": "women",
     "cityName": "Wrocław",
@@ -69,14 +77,16 @@
     "date": "13-12-2017",
     "hour": "13:50",
     "payment:": "free",
+    "img": "/data/events-img/e-img_0.png",
     "coordinates": {
       "lat": 51.11005617597957,
       "lng": 17.039655447006226
-    }
+    },
+    "description": "Gallia est omnis divisa in partes tres, quarum unam incolunt Belgae, aliam Aquitani, tertiam qui ipsorum lingua Celtae, nostra Galli appellantur. 2 Hi omnes lingua, institutis, legibus inter se differunt. Gallos ab Aquitanis Garumna flumen, a Belgis Matrona et Sequana dividit. 3 Horum omnium fortissimi sunt Belgae, propterea quod a cultu atque humanitate provinciae longissime absunt, minimeque ad eos mercatores saepe commeant atque ea quae ad effeminandos animos pertinent important, 4 proximique sunt Germanis, qui trans Rhenum incolunt, quibuscum continenter bellum gerunt."
   },
   {
     "id": 5,
-    "title": "Włoclowe 4",
+    "title": "Wroclowe 4",
     "category": "programowanie",
     "target": "women",
     "cityName": "Wrocław",
@@ -84,9 +94,11 @@
     "date": "13-12-2017",
     "hour": "13:50",
     "payment:": "free",
+    "img": "/data/events-img/e-img_0.png",
     "coordinates": {
       "lat": 51.10678243833654,
       "lng": 17.036479711532593
-    }
+    },
+    "description": "Gallia est omnis divisa in partes tres, quarum unam incolunt Belgae, aliam Aquitani, tertiam qui ipsorum lingua Celtae, nostra Galli appellantur. 2 Hi omnes lingua, institutis, legibus inter se differunt. Gallos ab Aquitanis Garumna flumen, a Belgis Matrona et Sequana dividit. 3 Horum omnium fortissimi sunt Belgae, propterea quod a cultu atque humanitate provinciae longissime absunt, minimeque ad eos mercatores saepe commeant atque ea quae ad effeminandos animos pertinent important, 4 proximique sunt Germanis, qui trans Rhenum incolunt, quibuscum continenter bellum gerunt."
   }
 ]
