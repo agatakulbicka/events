@@ -1,12 +1,19 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {Row, Col, Thumbnail, Button, Grid} from 'react-bootstrap'
+import {Row, Col, Thumbnail, Button, Grid, Glyphicon} from 'react-bootstrap'
 import './list-events-style.css'
+import {addEventToFavourites, deleteEventFromFavourites} from './actionCreators'
 
 
 const mapStateToProps = (state) => ({
     events: state.eventsCitiesData.events,
-    fetchingEvents: state.eventsCitiesData.fetchingEvents
+    fetchingEvents: state.eventsCitiesData.fetchingEvents,
+    favouritesEventsIds: state.favouritesEvents.favouritesEventsIds
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    addEventToFavourites: (eventId) => dispatch(addEventToFavourites(eventId)),
+    deleteEventFromFavourites: (eventId) => dispatch(deleteEventFromFavourites(eventId))
 })
 
 
@@ -14,7 +21,11 @@ class ListEvents extends React.Component {
     render() {
         var {
             events,
-            fetchingEvents
+            fetchingEvents,
+            favouritesEventsIds,
+            addEventToFavourites,
+            deleteEventFromFavourites
+
         }=this.props;
 
         return (
@@ -23,7 +34,8 @@ class ListEvents extends React.Component {
                     {fetchingEvents ? "ładuję dane..." :
                         <div>
                             {events.map((event) => (
-                                <Col xs={12} sm={6} md={4} lg={4} className="thumb-col">
+                                <Col xs={12} sm={6} md={4} lg={4} className="thumb-col"
+                                     key={event.id}>
                                     <Thumbnail
                                         src={event.img} alt="242x200"
                                         key={event.id}>
@@ -34,7 +46,19 @@ class ListEvents extends React.Component {
                                         <p>{event.description}</p>
                                         <p>
                                             <Button bsStyle="primary">Czytaj więcej</Button>&nbsp;
-                                            <Button bsStyle="default">Dodaj do ulubionych</Button>
+                                            {favouritesEventsIds.indexOf(event.id) > -1 ?
+                                                <Button key={event.id}
+                                                        onClick={() => deleteEventFromFavourites(event.id)}
+                                                        bsStyle="default">
+                                                    <Glyphicon glyph="minus"/>
+                                                </Button>
+                                                :
+                                                <Button key={event.id}
+                                                        onClick={() => addEventToFavourites(event.id)}
+                                                        bsStyle="default">
+                                                    <Glyphicon glyph="heart"/>
+                                                </Button>
+                                            }
                                         </p>
                                     </Thumbnail>
                                 </Col>   ))}
@@ -46,4 +70,4 @@ class ListEvents extends React.Component {
     }
 }
 
-export default connect(mapStateToProps)(ListEvents)
+export default connect(mapStateToProps, mapDispatchToProps)(ListEvents)

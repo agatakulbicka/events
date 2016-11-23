@@ -3,10 +3,12 @@ import thunkMiddleware from 'redux-thunk'
 import createLogger from 'redux-logger'
 import persistState from 'redux-localstorage'
 import eventsCitiesReducer from './home/reducer'
+import listEventsReducer from './list-events/reducer'
 
 
 let reducer = combineReducers({
-    eventsCitiesData: eventsCitiesReducer
+    eventsCitiesData: eventsCitiesReducer,
+    favouritesEvents: listEventsReducer
 })
 
 // Create a Redux store holding the state of your app.
@@ -22,11 +24,11 @@ let store = createStore(
             loggerMiddleware
         )
     ),
-    persistState([])
+    persistState(['favouritesEvents'])
 )
 
 store.subscribe(() => {
-   // localStorage.setItem('favourites', JSON.stringify(store.getState().favourites.favourites|| []))
+    localStorage.setItem('favouritesEvents', JSON.stringify(store.getState().favouritesEvents.favouritesEvents|| []))
 
 })
 
