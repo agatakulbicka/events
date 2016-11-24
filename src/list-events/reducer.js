@@ -1,11 +1,14 @@
 import {
     ADD_EVENT_TO_FAVOURITES,
-    DELETE_EVENT_FROM_FAVOURITES
+    DELETE_EVENT_FROM_FAVOURITES,
+    ACTIVATE_FILTER
 }
     from './actionTypes'
 
 const initialState = {
-    favouritesEventsIds: []
+    favouritesEventsIds: [],
+    activeFilterName: 'wszyscy',
+    availableFilters: ['wszyscy', 'dzieci', 'męzczyzni', 'kobiety', 'seniorzy', 'mlodziez']
 }
 
 export default (state = initialState, action) => {
@@ -18,6 +21,10 @@ export default (state = initialState, action) => {
             return Object.assign({}, state, {
                 favouritesEventsIds: state.favouritesEventsIds.filter(eventId => eventId !== action.eventId)
             })
+        case ACTIVATE_FILTER:
+        return Object.assign({}, state, {
+            activeFilterName: action.nameOfFilterToActivate
+        })
         default:
             return state
     }
