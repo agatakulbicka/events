@@ -1,26 +1,26 @@
 const filters = {
     wszyscy: {
-        label: 'wszyscy',
+        label: 'Wszyscy',
         predicate: event => true
     },
     dzieci: {
-        label: 'dzieci',
+        label: 'Dzieci',
         predicate: event => event.target=== 'dzieci'
     },
     kobiety: {
-        label: 'kobiety',
+        label: 'Kobiety',
         predicate: event => event.target=== 'kobiety'
     },
     mezczyzni: {
-        label: 'mężczyźni',
+        label: 'Mężczyźni',
         predicate: event => event.target=== 'męzczyzni'
     },
     seniorzy: {
-        label: 'seniorzy',
+        label: 'Seniorzy',
         predicate: event => event.target=== 'seniorzy'
     },
     mlodziez: {
-        label: 'młodzież',
+        label: 'Młodzież',
         predicate: event => event.target=== 'młodziez'
     }
 };

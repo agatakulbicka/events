@@ -5,6 +5,7 @@ import {
 }
     from './actionTypes'
 
+
 export function addEventToFavourites(eventId) {
     return {
         type: ADD_EVENT_TO_FAVOURITES,

@@ -8,7 +8,7 @@ import {
 const initialState = {
     favouritesEventsIds: [],
     activeFilterName: 'wszyscy',
-    availableFilters: ['wszyscy', 'dzieci', 'męzczyzni', 'kobiety', 'seniorzy', 'mlodziez']
+    availableFilters: ['wszyscy', 'dzieci', 'kobiety', 'mezczyzni', 'seniorzy', 'mlodziez']
 }
 
 export default (state = initialState, action) => {
@@ -22,9 +22,9 @@ export default (state = initialState, action) => {
                 favouritesEventsIds: state.favouritesEventsIds.filter(eventId => eventId !== action.eventId)
             })
         case ACTIVATE_FILTER:
-        return Object.assign({}, state, {
-            activeFilterName: action.nameOfFilterToActivate
-        })
+            return Object.assign({}, state, {
+                activeFilterName: action.nameOfFilterToActivate
+            })
         default:
             return state
     }
