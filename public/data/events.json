@@ -42,7 +42,7 @@
     "address": "Gdzieśtam indziej",
     "date": "13-12-2017",
     "hour": "13:50",
-    "payment:": "free",
+    "payment": "free",
     "img": "/data/events-img/e-img_0.png",
     "coordinates": {
       "lat": 54.32853723970533,
