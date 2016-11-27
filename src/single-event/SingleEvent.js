@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {Grid, Col, Panel, Row, Image} from 'react-bootstrap'
+import {LinkContainer} from 'react-router-bootstrap'
+import {Grid, Col, Panel, Row, Image, Pager} from 'react-bootstrap'
 import './single-event-styles.css'
 
 
@@ -21,6 +22,25 @@ class SingleEvent extends React.Component {
 
         return (
             <Grid>
+                <Row>
+                    <Col xs={12}>
+                        <Pager>
+                            {event.id > 0 ?
+                                <LinkContainer to={`/list-events/${event.id - 1}`}>
+                                    <Pager.Item>&larr; Poprzednie</Pager.Item>
+                                </LinkContainer> :
+                                <Pager.Item href="/" disabled>Brak wcześniejszych</Pager.Item>}
+
+                            {' '}
+                            {event.id < events.length - 1 ?
+                                <LinkContainer to={`/list-events/${event.id + 1}`}>
+                                    <Pager.Item>Kolejne &rarr;</Pager.Item>
+                                </LinkContainer> :
+                                <Pager.Item href="/" disabled>Brak następnych</Pager.Item>}
+
+                        </Pager>
+                    </Col>
+                </Row>
                 {fetchingEvent ? "ładuję dane" :
 
                     <Panel key={event.id}>
@@ -50,5 +70,6 @@ class SingleEvent extends React.Component {
         )
     }
 }
+
 
 export default connect(mapStateToProps)(SingleEvent)

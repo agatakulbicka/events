@@ -3,8 +3,8 @@ import {connect} from 'react-redux'
 import {Row, Col, Thumbnail, Button, Grid, Glyphicon, ButtonGroup} from 'react-bootstrap'
 import './list-events-style.css'
 import {addEventToFavourites, deleteEventFromFavourites, activateFilter} from './actionCreators'
-import {Link} from 'react-router'
 import filters from './filters'
+import {LinkContainer} from 'react-router-bootstrap'
 
 
 const mapStateToProps = (state) => ({
@@ -74,8 +74,9 @@ class ListEvents extends React.Component {
         <p>{event.date}</p>
         <p>{event.description}</p>
         <p>
-
-            <Link to={`/list-events/${event.id}`}>{<Button bsStyle="primary">Czytaj więcej</Button>}</Link>
+            <LinkContainer to={`/list-events/${event.id}`}>
+                <Button bsStyle="success">Czytaj więcej</Button>
+            </LinkContainer>
             &nbsp;
         {favouritesEventsIds.indexOf(event.id) > -1 ?
         <Button key={event.id}
