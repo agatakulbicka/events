@@ -3,3 +3,7 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+#root > div > div > div.panel.panel-success > div.panel-heading {
+    font-size: 6vh;
+}

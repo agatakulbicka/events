@@ -1,3 +1,13 @@
 .mainMap {
     height: 500px;
 }
+
+.home-main-window div {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.home-main-window .col-xs-12 {
+    padding-left: 0;
+    padding-right: 0;
+}

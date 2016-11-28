@@ -17,7 +17,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    showEventsInCity: (currentCity, cityLat,cityLng) => dispatch(showEventsInCity(currentCity, cityLat, cityLng))
+    showEventsInCity: (currentCity, cityLat, cityLng) => dispatch(showEventsInCity(currentCity, cityLat, cityLng))
 })
 
 class Home extends React.Component {
@@ -34,7 +34,7 @@ class Home extends React.Component {
         }=this.props
         console.log(this.props.currentCity, 'miasto');
         return (
-            <div>
+            <div className="home-main-window">
                 <Row>
                     <Col md={6}>
                         <form>
@@ -59,7 +59,7 @@ class Home extends React.Component {
                     </Col>
                 </Row>
                 <Row>
-                    <Col md={12}>
+                    <Col xs={12}>
                         {fetchingEvents ? "Ładuję dane mapy, proszę czekać..." :
                             <div className="mainMap">
 
@@ -84,9 +84,8 @@ class Home extends React.Component {
                         }
                     </Col>
                 </Row>
-
-
-            </div>)
+            </div>
+        )
     }
 }
 

@@ -21,7 +21,7 @@ class SingleEvent extends React.Component {
         var event = events[this.props.params.singleEventId]
 
         return (
-            <Grid>
+            <Grid className="single-event-panel">
                 <Row>
                     <Col xs={12}>
                         <Pager>
@@ -43,19 +43,21 @@ class SingleEvent extends React.Component {
                 </Row>
                 {fetchingEvent ? "ładuję dane" :
 
-                    <Panel key={event.id}>
+                    <Panel key={event.id}
+                           header={event.title}
+                           bsStyle="success">
                         <Row>
                             <Col xs={12}>
-                                <h1>{event.title}</h1>
+
                             </Col>
                         </Row>
                         <Row>
                             <Col lg={4} xs={12}>
-                                <p>Miasto: {event.cityName}</p>
-                                <p>Grupa docelowa: {event.target}</p>
-                                <p>Data: {event.date}</p>
-                                <p>Godzina rozpoczęcia: {event.hour}</p>
-                                <p>Adres: {event.address}</p>
+                                <p>Miasto: <strong>{event.cityName}</strong></p>
+                                <p>Grupa docelowa: <strong>{event.target}</strong></p>
+                                <p>Data: <strong>{event.date}</strong></p>
+                                <p>Godzina rozpoczęcia: <strong>{event.hour}</strong></p>
+                                <p>Adres: <strong>{event.address}</strong></p>
                                 <Image className="event-img"
                                        responsive src={event.img} alt="242x200"/>
                             </Col>

@@ -1,13 +1,15 @@
 import React from 'react'
 import {IndexLinkContainer} from 'react-router-bootstrap'
 import {Nav, Navbar, NavItem} from 'react-bootstrap'
+import './navbar-style.css'
+import Logo from './events-logo.png'
 
 export default (props) =>
 
     <Navbar inverse className="App-Menu">
         <Navbar.Header>
             <Navbar.Brand>
-                <img src={`/`} alt="Logo" className="responsive" id="logo"/>
+                <img src={Logo} alt="Logo" id="logo"/>
             </Navbar.Brand>
             <Navbar.Toggle />
         </Navbar.Header>

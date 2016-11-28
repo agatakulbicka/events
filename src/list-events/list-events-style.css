@@ -10,8 +10,8 @@
 
 .thumb-col {
     display: flex;
-    padding-left:5px;
-    padding-right:5px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .thumb-col .thumbnail {
@@ -21,3 +21,10 @@
 .thumb-col .thumbnail {
     padding: 20px;
 }
+
+.flexbox.thumb-row.row {
+    display: block;
+    margin: 0 auto;
+}
+
+
