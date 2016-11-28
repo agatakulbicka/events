@@ -11,9 +11,8 @@ const mapStateToProps = (state) => ({
     cities: state.eventsCitiesData.cities,
     fetchingCities: state.eventsCitiesData.fetchingCities,
     fetchingEvents: state.eventsCitiesData.fetchingEvents,
-    currentCity: state.eventsCitiesData.currentCity,
-    cityLat: state.eventsCitiesData.cityLat,
-    cityLng: state.eventsCitiesData.cityLng
+    currentLocalisation: state.eventsCitiesData.currentLocalisation,
+    currentGeoLocalisation: state.eventsCitiesData.currentGeoLocalisation
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -28,10 +27,10 @@ class Home extends React.Component {
             fetchingCities,
             fetchingEvents,
             showEventsInCity,
-            currentCity,
-            cityLat,
-            cityLng
-        }=this.props
+            currentLocalisation,
+            currentGeoLocalisation
+        }=this.props;
+
         console.log(this.props.currentCity, 'miasto');
         return (
             <div className="home-main-window">
@@ -42,10 +41,14 @@ class Home extends React.Component {
                                 <ControlLabel>Wybierz interesujące Cię miasto: </ControlLabel>
                                 {fetchingCities ? 'Proszę czekać, trwa ładowanie danych' :
                                     <FormControl componentClass="select" placeholder="select"
-                                                 data-lat="test"
                                                  onChange={(event) =>showEventsInCity(event.target.value,
                                                      event.target.options[event.target.selectedIndex].dataset.lat,
                                                      event.target.options[event.target.selectedIndex].dataset.lng)}>
+                                        <option value="Twoja obecna lokalizacja"
+                                                data-lat={currentGeoLocalisation.cityLat}
+                                                data-lng={currentGeoLocalisation.cityLng}>
+                                            Twoja obecna lokalizacja
+                                        </option>
                                         {cities.map((city) =>
                                             <option value={city.cityName} key={city.id}
                                                     data-lat={city.coordinates.lat} data-lng={city.coordinates.lng}>
@@ -68,10 +71,10 @@ class Home extends React.Component {
                                         key: 'AIzaSyCJSyocAtUnWSKhjyqZlJtmaf_afdJcOkA',
                                         language: 'pl'
                                     }}
-                                    center={[parseFloat(cityLat), parseFloat(cityLng)]}
+                                    center={[parseFloat(currentLocalisation.cityLat), parseFloat(currentLocalisation.cityLng)]}
                                     zoom={11}>
 
-                                    {events.filter((singleEvent)=> singleEvent.cityName === currentCity)
+                                    {events.filter((singleEvent)=> singleEvent.cityName === currentLocalisation.currentCity)
                                         .map((singleEvent) =>
                                             <Place text={"A"}
                                                    className="mapPointer"

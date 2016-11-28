@@ -3,7 +3,9 @@ import {
     RECEIVE_EVENTS,
     REQUEST_CITIES,
     RECEIVE_CITIES,
-    SHOW_EVENTS_IN_CITY
+    SHOW_EVENTS_IN_CITY,
+    RECEIVE_CURRENT_LOCALISATION,
+    FAILED_TO_RECEIVE_CURRENT_LOCALISATION
 }
     from './actionTypes'
 
@@ -62,5 +64,28 @@ export function showEventsInCity(currentCity, cityLat, cityLng) {
         currentCity: currentCity,
         cityLat: cityLat,
         cityLng: cityLng
+    }
+}
+
+function receiveCurrentLocalisation(currentPosition) {
+    return {
+        type: RECEIVE_CURRENT_LOCALISATION,
+        currentPosition: currentPosition
+    }
+}
+
+function failedToReceiveCurrentlocalisation() {
+    return {
+        type: FAILED_TO_RECEIVE_CURRENT_LOCALISATION
+    }
+}
+
+export function requestCurrentLocalisation() {
+    return function (dispatch) {
+        if (navigator.geolocation) {
+            return navigator.geolocation.getCurrentPosition(currentPosition => dispatch(receiveCurrentLocalisation(currentPosition)))
+        } else {
+            return dispatch(failedToReceiveCurrentlocalisation())
+        }
     }
 }

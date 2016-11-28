@@ -28,7 +28,7 @@ let store = createStore(
 )
 
 store.subscribe(() => {
-    localStorage.setItem('favouritesEvents', JSON.stringify(store.getState().favouritesEvents.favouritesEvents|| []))
+    localStorage.setItem('favouritesEvents', JSON.stringify(store.getState().favouritesEvents|| []))
 
 })
 

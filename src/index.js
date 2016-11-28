@@ -11,12 +11,13 @@ import ListEvents from './list-events/ListEvents'
 import Home from './home/Home'
 import SingleEvent from './single-event/SingleEvent'
 
-import {fetchEvents, fetchCities} from './home/actionCreators'
+import {fetchEvents, fetchCities, requestCurrentLocalisation} from './home/actionCreators'
 
 
 function fetchEventsCitiesData() {
     store.dispatch(fetchEvents())
     store.dispatch(fetchCities())
+    store.dispatch(requestCurrentLocalisation())
 }
 
 ReactDOM.render(

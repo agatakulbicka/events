@@ -3,7 +3,9 @@ import {
     RECEIVE_EVENTS,
     REQUEST_CITIES,
     RECEIVE_CITIES,
-    SHOW_EVENTS_IN_CITY
+    SHOW_EVENTS_IN_CITY,
+    RECEIVE_CURRENT_LOCALISATION,
+    FAILED_TO_RECEIVE_CURRENT_LOCALISATION
 }
     from './actionTypes'
 
@@ -12,9 +14,17 @@ const initialState = {
     cities: [],
     fetchingEvents: false,
     fetchingCities: false,
-    currentCity: '',
-    cityLat: 53.77595689376808,
-    cityLng: 20.476584434509277
+    currentLocalisation: {
+        currentCity: 'Olsztyn',
+        cityLat: 53.77595689376808,
+        cityLng: 20.476584434509277
+    },
+    currentGeoLocalisation: {
+        currentCity: 'Twoja obecna lokalizacja',
+        cityLat: null,
+        cityLng: null
+    }
+
 }
 
 export default (state = initialState, action) => {
@@ -39,10 +49,30 @@ export default (state = initialState, action) => {
             });
         case SHOW_EVENTS_IN_CITY:
             return Object.assign({}, state, {
-                currentCity: action.currentCity,
-                cityLat: action.cityLat,
-                cityLng: action.cityLng
+                currentLocalisation: {
+                    currentCity: action.currentCity,
+                    cityLat: action.cityLat,
+                    cityLng: action.cityLng
+                }
             });
+        case RECEIVE_CURRENT_LOCALISATION:
+            return Object.assign({}, state, {
+                currentGeoLocalisation: {
+                    currentCity: 'Twoja obecna lokalizacja',
+                    cityLat: action.currentPosition.coords.latitude,
+                    cityLng: action.currentPosition.coords.longitude
+                },
+                currentLocalisation: {
+                    currentCity: 'Twoja obecna lokalizacja',
+                    cityLat: action.currentPosition.coords.latitude,
+                    cityLng: action.currentPosition.coords.longitude
+                }
+            });
+        case FAILED_TO_RECEIVE_CURRENT_LOCALISATION:
+            return Object.assign({}, state, {
+                currentGeoLocalisation: null
+            });
+
         default:
             return state
     }
