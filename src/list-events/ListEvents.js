@@ -35,9 +35,9 @@ class ListEvents extends React.Component {
             availableFilters,
             activeFilter,
             activateFilter
-
         }=this.props;
 
+        let selectedEvents = events.filter(activeFilter.predicate);
         return (
             <Grid>
                 <Row>
@@ -50,50 +50,50 @@ class ListEvents extends React.Component {
                                 >
                                     {filters[currentFilterName].label}
                                 </Button>
-
                             )
                         )}
                     </ButtonGroup>
-
                 </Row>
                 <Row className="flexbox thumb-row">
                     {fetchingEvents ? "ładuję dane..." :
                         <div>
-                            {events.filter(activeFilter.predicate)
-                                .map((event) => (
-                                    <Col xs={12} sm={6} md={4} lg={4} className="thumb-col"
-                                         key={event.id}>
-
-                                        <Thumbnail
-                                            src={event.img}
-                                            key={event.id}>
-                                            <h3>{event.title}</h3>
-                                            <p>{event.category}</p>
-                                            <p>{event.cityName}</p>
-                                            <p>{event.date}</p>
-                                            <p>{event.shortDescription}</p>
-                                            <p>
-                                                <LinkContainer to={`/list-events/${event.id}`}>
-                                                    <Button bsStyle="success">Czytaj więcej</Button>
-                                                </LinkContainer>
-                                                &nbsp;
-                                                {favouritesEventsIds.indexOf(event.id) > -1 ?
-                                                    <Button key={event.id}
-                                                            onClick={() => deleteEventFromFavourites(event.id)}
-                                                            bsStyle="default">
-                                                        <Glyphicon glyph="minus"/>
-                                                    </Button>
-                                                    :
-                                                    <Button key={event.id}
-                                                            onClick={() => addEventToFavourites(event.id)}
-                                                            bsStyle="default">
-                                                        <Glyphicon glyph="heart"/>
-                                                    </Button>
-                                                }
-                                            </p>
-                                        </Thumbnail>
-                                    </Col>
-                                ))}
+                            {selectedEvents.length === 0 ?
+                                <h1>Brak wydarzeń w podanej kategorii</h1>
+                                :
+                                selectedEvents
+                                    .map((event) => (
+                                        <Col xs={12} sm={6} md={4} lg={4} className="thumb-col"
+                                             key={event.id}>
+                                            <Thumbnail
+                                                src={event.img}
+                                                key={event.id}>
+                                                <h3>{event.title}</h3>
+                                                <p>{event.category}</p>
+                                                <p>{event.cityName}</p>
+                                                <p>{event.date}</p>
+                                                <p>{event.shortDescription}</p>
+                                                <p>
+                                                    <LinkContainer to={`/list-events/${event.id}`}>
+                                                        <Button bsStyle="success">Czytaj więcej</Button>
+                                                    </LinkContainer>
+                                                    &nbsp;
+                                                    {favouritesEventsIds.indexOf(event.id) > -1 ?
+                                                        <Button key={event.id}
+                                                                onClick={() => deleteEventFromFavourites(event.id)}
+                                                                bsStyle="default">
+                                                            <Glyphicon glyph="minus"/>
+                                                        </Button>
+                                                        :
+                                                        <Button key={event.id}
+                                                                onClick={() => addEventToFavourites(event.id)}
+                                                                bsStyle="default">
+                                                            <Glyphicon glyph="heart"/>
+                                                        </Button>
+                                                    }
+                                                </p>
+                                            </Thumbnail>
+                                        </Col>
+                                    ))}
                         </div>
                     }
                 </Row>
