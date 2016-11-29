@@ -24,6 +24,10 @@ export default (props) =>
                     <NavItem eventKey={1} href="#">Wydarzenia</NavItem>
                 </IndexLinkContainer>
 
+                <IndexLinkContainer to={`/events-calendar`}>
+                    <NavItem eventKey={2} href="#">Kalendarz Wydarzeń</NavItem>
+                </IndexLinkContainer>
+
             </Nav>
         </Navbar.Collapse>
     </Navbar>

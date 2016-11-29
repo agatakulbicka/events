@@ -1,0 +1,35 @@
+#mainEventCalendar > div > div > div > div {
+    height: 500px;
+}
+
+#mainEventCalendar > div > div > div {
+    padding: 20px;
+}
+
+#mainEventCalendar .rbc-month-view > div:nth-child(6) > div.rbc-row-content > div > div.rbc-date-cell.rbc-now.rbc-current {
+    font-size: 2em;
+    color: #419641;
+}
+
+#mainEventCalendar .rbc-toolbar > span:nth-child(3),
+#mainEventCalendar .rbc-toolbar > span:nth-child(1){
+    background-image: linear-gradient(to bottom, #5cb85c 0%, #419641 100%);
+    color: white;
+}
+
+#mainEventCalendar .rbc-toolbar > span:nth-child(3) > button.rbc-active,
+#mainEventCalendar .rbc-toolbar > span:nth-child(1) > button.rbc-active,
+#mainEventCalendar .rbc-toolbar > span:nth-child(3) button:hover,
+#mainEventCalendar .rbc-toolbar > span:nth-child(1) button:hover{
+    border-color: #3e8f3e;
+    background: #419641 none;
+}
+
+#mainEventCalendar .rbc-toolbar button {
+    color: white;
+}
+
+#mainEventCalendar .rbc-toolbar > span.rbc-toolbar-label {
+    font-size: 2em;
+    color: #419641;
+}

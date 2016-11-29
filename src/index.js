@@ -10,6 +10,7 @@ import App from './app/App';
 import ListEvents from './list-events/ListEvents'
 import Home from './home/Home'
 import SingleEvent from './single-event/SingleEvent'
+import EventsCalendar from './events-calendar/EventsCalendar'
 
 import {fetchEvents, fetchCities, requestCurrentLocalisation} from './home/actionCreators'
 
@@ -27,6 +28,7 @@ ReactDOM.render(
                 <IndexRoute component={Home}/>
                 <Route path="/list-events" component={ListEvents}/>
                 <Route path="/list-events/:singleEventId" component={SingleEvent}/>
+                <Route path="/events-calendar" component={EventsCalendar}/>
             </Route>
         </Router>
     </Provider>,
