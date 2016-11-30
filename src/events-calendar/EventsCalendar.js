@@ -6,14 +6,13 @@ BigCalendar.momentLocalizer(moment);
 import {Grid, Row, Col} from 'react-bootstrap'
 import './events-calendar-styles.css'
 import {connect} from 'react-redux'
-
 const mapStateToProps = (state) => ({
     events: state.eventsCitiesData.events
 })
 
 
 class EventCalendar extends React.Component {
-    render(){
+    render() {
 
         var {events}=this.props;
         return (
@@ -22,9 +21,17 @@ class EventCalendar extends React.Component {
                     <Row>
                         <Col>
                             <BigCalendar
-                                events={events.map((event) => event)}
+                                events={events.map(function (event) {
+                                    return {
+                                        ...event,
+                                        start: new Date(event.start),
+                                        end: new Date(event.end)
+                                    }
+                                })
+                                }
                                 defaultDate={new Date()}
                                 defaultView='month'
+                                timeslots={1}
                                 popup
                             />
                         </Col>
@@ -35,4 +42,4 @@ class EventCalendar extends React.Component {
     }
 }
 
-export default connect (mapStateToProps)(EventCalendar)
+export default connect(mapStateToProps)(EventCalendar)
