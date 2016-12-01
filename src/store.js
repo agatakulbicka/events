@@ -4,11 +4,13 @@ import createLogger from 'redux-logger'
 import persistState from 'redux-localstorage'
 import eventsCitiesReducer from './home/reducer'
 import listEventsReducer from './list-events/reducer'
+import addNewEventReducer from './new-event-form/reducer'
 
 
 let reducer = combineReducers({
     eventsCitiesData: eventsCitiesReducer,
-    favouritesEvents: listEventsReducer
+    favouritesEvents: listEventsReducer,
+    addNewEvents: addNewEventReducer
 })
 
 // Create a Redux store holding the state of your app.

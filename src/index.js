@@ -11,6 +11,7 @@ import ListEvents from './list-events/ListEvents'
 import Home from './home/Home'
 import SingleEvent from './single-event/SingleEvent'
 import EventsCalendar from './events-calendar/EventsCalendar'
+import NewEventForm from './new-event-form/NewEventForm'
 
 import {fetchEvents, fetchCities, requestCurrentLocalisation} from './home/actionCreators'
 
@@ -29,6 +30,7 @@ ReactDOM.render(
                 <Route path="/list-events" component={ListEvents}/>
                 <Route path="/list-events/:singleEventId" component={SingleEvent}/>
                 <Route path="/events-calendar" component={EventsCalendar}/>
+                <Route path="/new-event" component={NewEventForm}/>
             </Route>
         </Router>
     </Provider>,
