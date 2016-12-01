@@ -7,7 +7,7 @@
 }
 
 /*current day on calendar*/
-#mainEventCalendar .rbc-month-view > div:nth-child(6) > div.rbc-row-content > div > div.rbc-date-cell.rbc-now.rbc-current {
+#mainEventCalendar .rbc-date-cell.rbc-now.rbc-current {
     font-size: 2em;
     color: #419641;
 }
