@@ -21,6 +21,7 @@ class EventCalendar extends React.Component {
                     <Row>
                         <Col>
                             <BigCalendar
+                                selectable={true}
                                 events={events.map(function (event) {
                                     return {
                                         ...event,

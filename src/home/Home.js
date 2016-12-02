@@ -31,7 +31,6 @@ class Home extends React.Component {
             currentGeoLocalisation
         }=this.props;
 
-        console.log(this.props.currentCity, 'miasto');
         return (
             <div className="home-main-window">
                 <Row>
@@ -41,7 +40,7 @@ class Home extends React.Component {
                                 <ControlLabel>Wybierz interesujące Cię miasto: </ControlLabel>
                                 {fetchingCities ? 'Proszę czekać, trwa ładowanie danych' :
                                     <FormControl componentClass="select" placeholder="select"
-                                                 onChange={(event) =>showEventsInCity(event.target.value,
+                                                 onChange={(event) => showEventsInCity(event.target.value,
                                                      event.target.options[event.target.selectedIndex].dataset.lat,
                                                      event.target.options[event.target.selectedIndex].dataset.lng)}>
                                         <option value="Twoja obecna lokalizacja"

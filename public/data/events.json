@@ -22,7 +22,6 @@
   {
     "id": 1,
     "title": "Django Girls Olsztyn III",
-    "category": "programowanie",
     "target": "kobiety",
     "cityName": "Olsztyn",
     "address": "Gdzieśtam indziej",
@@ -42,7 +41,6 @@
   {
     "id": 2,
     "title": "Karotki I",
-    "category": "programowanie",
     "target": "mezczyzni",
     "cityName": "Gdańsk",
     "address": "Gdzieśtam indziej",
@@ -62,7 +60,6 @@
   {
     "id": 3,
     "title": "Karotki II",
-    "category": "programowanie",
     "target": "dzieci",
     "cityName": "Gdańsk",
     "address": "Gdzieśtam indziej",
@@ -82,7 +79,6 @@
   {
     "id": 4,
     "title": "Wroclowe 2",
-    "category": "programowanie",
     "target": "seniorzy",
     "cityName": "Wrocław",
     "address": "Gdzieśtam indziej",
@@ -102,7 +98,6 @@
   {
     "id": 5,
     "title": "Wroclowe 4",
-    "category": "programowanie",
     "target": "mlodziez",
     "cityName": "Wrocław",
     "address": "Gdzieśtam indziej",
