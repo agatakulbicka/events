@@ -1,7 +1,8 @@
 import {
     SHOW_FIELD_TO_INSERT_PAYMENT,
     HIDE_FIELD_TO_INSERT_PAYMENT,
-    SET_IMG_SOURCE
+    SET_IMG_SOURCE,
+    GET_COORDINATES_ON_CLICK
 }
     from './actionTypes'
 
@@ -33,3 +34,9 @@ function setImgSource(imgSource) {
 }
 
 
+export function getCoordinatesOnClick(place){
+    return{
+        type: GET_COORDINATES_ON_CLICK,
+        place: place
+    }
+}

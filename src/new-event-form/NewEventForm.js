@@ -9,7 +9,8 @@ import {connect} from 'react-redux'
 import {
     showFieldToInsertPayment,
     hideFieldToInsertPayment,
-    showFile
+    showFile,
+    getCoordinatesOnClick
 } from './actionCreators'
 import './new-event-form.css'
 import GoogleMap from 'google-map-react'
@@ -20,14 +21,17 @@ const mapStateToProps = (state) => ({
     isPaymentLabelOpened: state.addNewEvents.isPaymentLabelOpened,
     imgSource: state.addNewEvents.imgSource,
     currentLocalisation: state.eventsCitiesData.currentLocalisation,
-    currentGeoLocalisation: state.eventsCitiesData.currentGeoLocalisation
+    // currentGeoLocalisation: state.eventsCitiesData.currentGeoLocalisation,
+    place: state.addNewEvents.place,
+    isPlaceMarked: state.addNewEvents.isPlaceMarked
 
 })
 
 const mapDispatchToProps = (dispatch) => ({
     showFieldToInsertPayment: () => dispatch(showFieldToInsertPayment()),
     hideFieldToInsertPayment: () => dispatch(hideFieldToInsertPayment()),
-    showFile: (file) => dispatch(showFile(file))
+    showFile: (file) => dispatch(showFile(file)),
+    getCoordinatesOnClick: (place) => dispatch(getCoordinatesOnClick(place))
 })
 
 
@@ -41,7 +45,10 @@ class NewEventForm extends React.Component {
             showFile,
             imgSource,
             currentLocalisation,
-            currentGeoLocalisation
+            getCoordinatesOnClick,
+            place,
+            isPlaceMarked
+            // currentGeoLocalisation
         }=this.props;
 
         return (
@@ -93,14 +100,18 @@ class NewEventForm extends React.Component {
                                                 key: 'AIzaSyCJSyocAtUnWSKhjyqZlJtmaf_afdJcOkA',
                                                 language: 'pl'
                                             }}
+                                            onClick={(place) => getCoordinatesOnClick(place)}
                                             center={[parseFloat(currentLocalisation.cityLat), parseFloat(currentLocalisation.cityLng)]}
                                             zoom={11}>
 
-                                            <Place text={"A"}
-                                                   className="mapPointer"
-                                                   lat={currentLocalisation.cityLat}
-                                                   lng={currentLocalisation.cityLng}
-                                            />
+                                            {isPlaceMarked ?
+                                                <Place text={"A"}
+                                                       className="mapPointer"
+                                                       lat={place.lat}
+                                                       lng={place.lng}
+                                                />
+                                                : null}
+
                                         </GoogleMap>
                                     </div>
                                 </FormGroup>

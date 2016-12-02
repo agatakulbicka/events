@@ -1,13 +1,16 @@
 import {
     SHOW_FIELD_TO_INSERT_PAYMENT,
     HIDE_FIELD_TO_INSERT_PAYMENT,
-    SET_IMG_SOURCE
+    SET_IMG_SOURCE,
+    GET_COORDINATES_ON_CLICK
 }
     from './actionTypes'
 
 const initialState = {
     isPaymentLabelOpened: false,
-    imgSource: ''
+    imgSource: '',
+    place: [],
+    isPlaceMarked: false
 }
 
 export default (state = initialState, action) => {
@@ -23,6 +26,11 @@ export default (state = initialState, action) => {
         case SET_IMG_SOURCE:
             return Object.assign({}, state, {
                 imgSource: action.imgSource
+            })
+        case GET_COORDINATES_ON_CLICK:
+            return Object.assign({}, state, {
+                place: action.place,
+                isPlaceMarked: true
             })
 
         default:
