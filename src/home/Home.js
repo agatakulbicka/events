@@ -31,7 +31,6 @@ class Home extends React.Component {
             currentGeoLocalisation
         }=this.props;
 
-        console.log(this.props.currentCity, 'miasto');
         return (
             <div className="home-main-window">
                 <Row>

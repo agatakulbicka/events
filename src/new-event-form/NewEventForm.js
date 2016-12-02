@@ -3,7 +3,7 @@ import {
     Grid, Row, Col,
     FormGroup, FormControl,
     HelpBlock, ControlLabel, Radio,
-    Collapse, Image
+    Collapse, Image, Button
 } from 'react-bootstrap'
 import {connect} from 'react-redux'
 import {
@@ -12,10 +12,16 @@ import {
     showFile
 } from './actionCreators'
 import './new-event-form.css'
+import GoogleMap from 'google-map-react'
+
+import Place from '../place/Place'
 
 const mapStateToProps = (state) => ({
     isPaymentLabelOpened: state.addNewEvents.isPaymentLabelOpened,
-    imgSource: state.addNewEvents.imgSource
+    imgSource: state.addNewEvents.imgSource,
+    currentLocalisation: state.eventsCitiesData.currentLocalisation,
+    currentGeoLocalisation: state.eventsCitiesData.currentGeoLocalisation
+
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -33,11 +39,13 @@ class NewEventForm extends React.Component {
             showFieldToInsertPayment,
             hideFieldToInsertPayment,
             showFile,
-            imgSource
+            imgSource,
+            currentLocalisation,
+            currentGeoLocalisation
         }=this.props;
 
         return (
-            <div>
+            <div id="addNewEventForm">
                 <Grid>
                     <Row>
                         <Col xs={12}>
@@ -75,6 +83,28 @@ class NewEventForm extends React.Component {
                                     </FormControl>
                                 </FormGroup>
 
+
+                                <FormGroup controlId="formEventEventCoordinates">
+                                    <ControlLabel>Zaznacz na mapie miejsce, w którym odbędzie się
+                                        wydarzenie:</ControlLabel>
+                                    <div className="addNewEventMap">
+                                        <GoogleMap
+                                            bootstrapURLKeys={{
+                                                key: 'AIzaSyCJSyocAtUnWSKhjyqZlJtmaf_afdJcOkA',
+                                                language: 'pl'
+                                            }}
+                                            center={[parseFloat(currentLocalisation.cityLat), parseFloat(currentLocalisation.cityLng)]}
+                                            zoom={11}>
+
+                                            <Place text={"A"}
+                                                   className="mapPointer"
+                                                   lat={currentLocalisation.cityLat}
+                                                   lng={currentLocalisation.cityLng}
+                                            />
+                                        </GoogleMap>
+                                    </div>
+                                </FormGroup>
+
                                 <FormGroup controlId="formAddress">
                                     <ControlLabel>Adres, pod którym odbędzie się wydarzenie:</ControlLabel>
                                     <FormControl componentClass="textarea" placeholder="textarea"/>
@@ -102,6 +132,8 @@ class NewEventForm extends React.Component {
                                                     placeholder="Koszt wydarzenia"
                                                     value={isPaymentLabelOpened ? this.value : ''}
                                                 />
+                                                <ControlLabel>Link do biletów (opcjonalnie)</ControlLabel>
+                                                <input type="url"/>
                                                 <FormControl.Feedback />
                                             </div>
                                         </Collapse>
@@ -128,10 +160,29 @@ class NewEventForm extends React.Component {
                                                  placeholder="W tym miejscu możesz opisać całe wydarzenie"/>
                                 </FormGroup>
 
-                                <input type="date"/>
-                                <input type="time"/>
-                                <input type="url"/>
+                                <FormGroup controlId="formFullDescription">
+                                    <ControlLabel>Data wydarzenia</ControlLabel>
+                                    <p><input type="date"/></p>
+                                </FormGroup>
 
+                                <FormGroup controlId="formFullDescription">
+                                    <ControlLabel>Godzina ropoczęcia</ControlLabel>
+                                    <p><input type="time"/></p>
+                                </FormGroup>
+
+                                <FormGroup controlId="formFullDescription">
+                                    <ControlLabel>Godzina zakończenia (opcjonalnie)</ControlLabel>
+                                    <p><input type="time"/></p>
+                                </FormGroup>
+
+                                <FormGroup controlId="formFullDescription">
+                                    <ControlLabel>Link do strony wydarzenia</ControlLabel>
+                                    <p><input type="url"/></p>
+                                </FormGroup>
+                                <Button type="submit"
+                                        bsStyle="success">
+                                    Submit
+                                </Button>
                             </form>
                         </Col>
                     </Row>
