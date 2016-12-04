@@ -76,7 +76,6 @@ class Home extends React.Component {
                                     {events.filter((singleEvent)=> singleEvent.cityName === currentLocalisation.currentCity)
                                         .map((singleEvent) =>
                                             <Place
-                                                className="mapPointer"
                                                 key={singleEvent.id}
                                                 lat={singleEvent.coordinates.lat}
                                                 lng={singleEvent.coordinates.lng}

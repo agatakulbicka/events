@@ -7,3 +7,7 @@
 #root > div > div > div.panel.panel-success > div.panel-heading {
     font-size: 6vh;
 }
+
+.single-event-map {
+    height: 50vh;
+}

@@ -67,7 +67,7 @@
     "start": "2016-12-05T07:30:00.000Z",
     "end": "2016-12-05T09:30:00.000Z",
     "payment:": "free",
-    "img": "data/events-img/e-img_0.png",
+    "img": "/data/events-img/e-img_0.png",
     "coordinates": {
       "lat": 54.26001043274683,
       "lng": 18.702850341796875

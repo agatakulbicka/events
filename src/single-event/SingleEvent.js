@@ -3,6 +3,8 @@ import {connect} from 'react-redux'
 import {LinkContainer} from 'react-router-bootstrap'
 import {Grid, Col, Panel, Row, Image, Pager} from 'react-bootstrap'
 import './single-event-styles.css'
+import GoogleMap from 'google-map-react'
+import Place from '../place/Place'
 
 
 const mapStateToProps = (state) => ({
@@ -63,6 +65,22 @@ class SingleEvent extends React.Component {
                             </Col>
                             <Col lg={8} xs={12}>
                                 <p>{event.description}</p>
+                                <div className="single-event-map">
+
+                                    <GoogleMap
+                                        bootstrapURLKeys={{
+                                            key: 'AIzaSyCJSyocAtUnWSKhjyqZlJtmaf_afdJcOkA',
+                                            language: 'pl'
+                                        }}
+                                        center={[event.coordinates.lat, event.coordinates.lng]}
+                                        zoom={11}>
+                                                <Place
+                                                    key={event.id}
+                                                    lat={event.coordinates.lat}
+                                                    lng={event.coordinates.lng}
+                                                />
+                                    </GoogleMap>
+                                </div>
                             </Col>
                         </Row>
 
