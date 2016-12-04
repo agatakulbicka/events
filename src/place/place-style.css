@@ -1,3 +1,9 @@
 .mapPointer {
     font-size: 30px;
 }
+
+.location-pin {
+    margin-left: -26px;
+    margin-top: -100px;
+    max-width: 54px !important;
+}

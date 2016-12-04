@@ -21,7 +21,6 @@ const mapStateToProps = (state) => ({
     isPaymentLabelOpened: state.addNewEvents.isPaymentLabelOpened,
     imgSource: state.addNewEvents.imgSource,
     currentLocalisation: state.eventsCitiesData.currentLocalisation,
-    // currentGeoLocalisation: state.eventsCitiesData.currentGeoLocalisation,
     place: state.addNewEvents.place,
     isPlaceMarked: state.addNewEvents.isPlaceMarked
 
@@ -48,7 +47,6 @@ class NewEventForm extends React.Component {
             getCoordinatesOnClick,
             place,
             isPlaceMarked
-            // currentGeoLocalisation
         }=this.props;
 
         return (
@@ -102,13 +100,12 @@ class NewEventForm extends React.Component {
                                             }}
                                             onClick={(place) => getCoordinatesOnClick(place)}
                                             center={[parseFloat(currentLocalisation.cityLat), parseFloat(currentLocalisation.cityLng)]}
-                                            zoom={11}>
+                                            zoom={12}>
 
                                             {isPlaceMarked ?
-                                                <Place text={"A"}
-                                                       className="mapPointer"
-                                                       lat={place.lat}
-                                                       lng={place.lng}
+                                                <Place
+                                                    lat={place.lat}
+                                                    lng={place.lng}
                                                 />
                                                 : null}
 

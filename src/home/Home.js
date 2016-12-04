@@ -75,11 +75,11 @@ class Home extends React.Component {
 
                                     {events.filter((singleEvent)=> singleEvent.cityName === currentLocalisation.currentCity)
                                         .map((singleEvent) =>
-                                            <Place text={"A"}
-                                                   className="mapPointer"
-                                                   key={singleEvent.id}
-                                                   lat={singleEvent.coordinates.lat}
-                                                   lng={singleEvent.coordinates.lng}
+                                            <Place
+                                                className="mapPointer"
+                                                key={singleEvent.id}
+                                                lat={singleEvent.coordinates.lat}
+                                                lng={singleEvent.coordinates.lng}
                                             />)}
                                 </GoogleMap>
                             </div>
