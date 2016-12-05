@@ -36,7 +36,7 @@ class Home extends React.Component {
                 <Row>
                     <Col md={6}>
                         <form>
-                            <FormGroup controlId="formControlsSelect">
+                            <FormGroup controlId="formControlsSelectCity">
                                 <ControlLabel>Wybierz interesujące Cię miasto: </ControlLabel>
                                 {fetchingCities ? 'Proszę czekać, trwa ładowanie danych' :
                                     <FormControl componentClass="select" placeholder="select"

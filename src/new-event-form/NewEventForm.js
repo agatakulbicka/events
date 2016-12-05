@@ -12,6 +12,7 @@ import {
     showFile,
     getCoordinatesOnClick
 } from './actionCreators'
+import  {showEventsInCity} from '../home/actionCreators'
 import './new-event-form.css'
 import GoogleMap from 'google-map-react'
 
@@ -22,7 +23,9 @@ const mapStateToProps = (state) => ({
     imgSource: state.addNewEvents.imgSource,
     currentLocalisation: state.eventsCitiesData.currentLocalisation,
     place: state.addNewEvents.place,
-    isPlaceMarked: state.addNewEvents.isPlaceMarked
+    isPlaceMarked: state.addNewEvents.isPlaceMarked,
+    cities: state.eventsCitiesData.cities,
+    currentGeoLocalisation: state.eventsCitiesData.currentGeoLocalisation
 
 })
 
@@ -30,7 +33,8 @@ const mapDispatchToProps = (dispatch) => ({
     showFieldToInsertPayment: () => dispatch(showFieldToInsertPayment()),
     hideFieldToInsertPayment: () => dispatch(hideFieldToInsertPayment()),
     showFile: (file) => dispatch(showFile(file)),
-    getCoordinatesOnClick: (place) => dispatch(getCoordinatesOnClick(place))
+    getCoordinatesOnClick: (place) => dispatch(getCoordinatesOnClick(place)),
+    showEventsInCity: (currentCity, cityLat, cityLng) => dispatch(showEventsInCity(currentCity, cityLat, cityLng))
 })
 
 
@@ -46,7 +50,10 @@ class NewEventForm extends React.Component {
             currentLocalisation,
             getCoordinatesOnClick,
             place,
-            isPlaceMarked
+            isPlaceMarked,
+            cities,
+            currentGeoLocalisation,
+            showEventsInCity
         }=this.props;
 
         return (
@@ -88,10 +95,26 @@ class NewEventForm extends React.Component {
                                     </FormControl>
                                 </FormGroup>
 
-
                                 <FormGroup controlId="formEventEventCoordinates">
                                     <ControlLabel>Zaznacz na mapie miejsce, w którym odbędzie się
                                         wydarzenie:</ControlLabel>
+                                    <FormControl componentClass="select" placeholder="select"
+                                                 onChange={(event) => showEventsInCity(event.target.value,
+                                                     event.target.options[event.target.selectedIndex].dataset.lat,
+                                                     event.target.options[event.target.selectedIndex].dataset.lng)}>
+                                        <option value="Twoja obecna lokalizacja"
+                                                data-lat={currentGeoLocalisation.cityLat}
+                                                data-lng={currentGeoLocalisation.cityLng}>
+                                            Twoja obecna lokalizacja
+                                        </option>
+                                        {cities.map((city) =>
+                                            <option value={city.cityName} key={city.id}
+                                                    data-lat={city.coordinates.lat}
+                                                    data-lng={city.coordinates.lng}>
+                                                {city.cityName}
+                                            </option>
+                                        )}
+                                    </FormControl>
                                     <div className="addNewEventMap">
                                         <GoogleMap
                                             bootstrapURLKeys={{
@@ -101,7 +124,7 @@ class NewEventForm extends React.Component {
                                             onClick={(place) => getCoordinatesOnClick(place)}
                                             center={[parseFloat(currentLocalisation.cityLat), parseFloat(currentLocalisation.cityLng)]}
                                             zoom={12}>
-
+                                            {console.log('aktualne miasto do wświetlenia:', currentLocalisation.currentCity, 'wspolrzedne', currentGeoLocalisation.cityLng, currentGeoLocalisation.cityLat)}
                                             {isPlaceMarked ?
                                                 <Place
                                                     lat={place.lat}

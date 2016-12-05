@@ -34,8 +34,8 @@ function setImgSource(imgSource) {
 }
 
 
-export function getCoordinatesOnClick(place){
-    return{
+export function getCoordinatesOnClick(place) {
+    return {
         type: GET_COORDINATES_ON_CLICK,
         place: place
     }
