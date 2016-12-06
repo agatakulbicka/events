@@ -48,15 +48,17 @@ export function fetchEvents() {
 
 }
 
+
 export function fetchCities() {
     return function (dispatch) {
         dispatch(requestCities());
-        return fetch(`${process.env.PUBLIC_URL}/data/cities.json`)
+        return fetch('http://212.59.240.158:3010/api/cities')
             .then(response => response.json())
             .then(cities=> dispatch(receiveCities(cities)))
     }
 
 }
+
 
 export function showEventsInCity(currentCity, cityLat, cityLng) {
     return {
