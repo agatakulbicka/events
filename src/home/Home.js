@@ -1,10 +1,11 @@
 import React from 'react'
-import {Row, FormGroup, ControlLabel, FormControl, Col} from 'react-bootstrap'
+import {Row, FormGroup, ControlLabel, FormControl, Col, Panel} from 'react-bootstrap'
 import GoogleMap from 'google-map-react'
 import Place from '../place/Place'
 import './home-style.css'
 import {connect} from 'react-redux'
 import {showEventsInCity} from './actionCreators'
+import UpcomingEvents from './upcoming-events/UpcomingEvents'
 
 const mapStateToProps = (state) => ({
     events: state.eventsCitiesData.events,
@@ -33,6 +34,12 @@ class Home extends React.Component {
 
         return (
             <div className="home-main-window">
+                <Row>
+                    <Col xs={12}>
+                        <UpcomingEvents/>
+                    </Col>
+                </Row>
+
                 <Row>
                     <Col md={6}>
                         <form>
