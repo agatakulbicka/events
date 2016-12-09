@@ -10,13 +10,15 @@ import {
     showFieldToInsertPayment,
     hideFieldToInsertPayment,
     showFile,
-    getCoordinatesOnClick
+    getCoordinatesOnClick,
+    addNewEvent
 } from './actionCreators'
 import  {showEventsInCity} from '../home/actionCreators'
 import './new-event-form.css'
 import GoogleMap from 'google-map-react'
 
 import Place from '../place/Place'
+import AddNewEvent from './add-new-event/AddNewEvent'
 
 const mapStateToProps = (state) => ({
     isPaymentLabelOpened: state.addNewEvents.isPaymentLabelOpened,
@@ -34,7 +36,8 @@ const mapDispatchToProps = (dispatch) => ({
     hideFieldToInsertPayment: () => dispatch(hideFieldToInsertPayment()),
     showFile: (file) => dispatch(showFile(file)),
     getCoordinatesOnClick: (place) => dispatch(getCoordinatesOnClick(place)),
-    showEventsInCity: (currentCity, cityLat, cityLng) => dispatch(showEventsInCity(currentCity, cityLat, cityLng))
+    showEventsInCity: (currentCity, cityLat, cityLng) => dispatch(showEventsInCity(currentCity, cityLat, cityLng)),
+    addNewEvent: (title, description, cost, start) => dispatch(addNewEvent(title, description, cost, start))
 })
 
 
@@ -53,13 +56,16 @@ class NewEventForm extends React.Component {
             isPlaceMarked,
             cities,
             currentGeoLocalisation,
-            showEventsInCity
+            showEventsInCity,
+            addNewEvent
         }=this.props;
 
         return (
             <div id="addNewEventForm">
+
                 <Grid>
                     <Row>
+                        <AddNewEvent handleSubmit={addNewEvent}/>
                         <Col xs={12}>
                             <form>
                                 <FormGroup
