@@ -37,7 +37,7 @@ const mapDispatchToProps = (dispatch) => ({
     showFile: (file) => dispatch(showFile(file)),
     getCoordinatesOnClick: (place) => dispatch(getCoordinatesOnClick(place)),
     showEventsInCity: (currentCity, cityLat, cityLng) => dispatch(showEventsInCity(currentCity, cityLat, cityLng)),
-    addNewEvent: (title, description, cost, start) => dispatch(addNewEvent(title, description, cost, start))
+    addNewEvent: (title, description, cost, start, target, imgSrc) => dispatch(addNewEvent(title, description, cost, start, target, imgSrc))
 })
 
 
@@ -62,7 +62,6 @@ class NewEventForm extends React.Component {
 
         return (
             <div id="addNewEventForm">
-
                 <Grid>
                     <Row>
                         <AddNewEvent handleSubmit={addNewEvent}/>

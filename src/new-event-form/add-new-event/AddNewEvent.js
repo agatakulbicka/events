@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-    FormGroup, FormControl, ControlLabel
+    FormGroup, FormControl, ControlLabel, Image
 } from 'react-bootstrap'
 
 export default class AddNewForm extends React.Component {
@@ -8,18 +8,45 @@ export default class AddNewForm extends React.Component {
     constructor() {
         super()
         this.state = {
-            title: 'Enter title...',
-            description: 'Enter description',
-            cost: 'Enter cost',
-            start: null
+            title: 'Podaj nazwę...',
+            description: 'Pełny opis wydarzenia...',
+            cost: 'Koszt wydarzenia...',
+            start: null,
+            target: 'wszyscy',
+            imgSrc: '',
+            file: []
         }
+        this.showFile = this.showFile.bind(this);
     }
+
+    showFile() {
+        var file = this.refs.file.files[0]
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+
+
+        reader.onloadend = function (e) {
+            if(file.length == 0) {
+                console.log('załaduj mniejsze zdjęcie')
+            }
+            else {
+                this.setState({
+                    imgSrc: [reader.result].size > 2000
+                })
+                console.log('file size', file.size)
+            }
+
+        }.bind(this);
+
+    }
+
 
     render() {
         return (
             <form onSubmit={(event) => {
                 event.preventDefault()
-                this.props.handleSubmit(this.state.title, this.state.description, this.state.cost, this.state.start)
+                this.props.handleSubmit(this.state.title, this.state.description, this.state.cost,
+                    this.state.start, this.state.target, this.state.imgSrc)
             }}>
                 <FormGroup
                     controlId="formEventTitle">
@@ -33,6 +60,23 @@ export default class AddNewForm extends React.Component {
                     />
                     <FormControl.Feedback />
                 </FormGroup>
+
+                <FormGroup controlId="formEventCategory">
+                    <ControlLabel>Do kogo skierowane jest to wydarzenie</ControlLabel>
+                    <FormControl componentClass="select" placeholder="select"
+                                 defaultValue={this.state.target}
+                                 onChange={(event) => this.setState({
+                                     target: event.target.value
+                                 })}
+                    >
+                        <option value="wszyscy">wszyscy</option>
+                        <option value="kobiety">kobiety</option>
+                        <option value="mezczyzni">mężczyźni</option>
+                        <option value="seniorzy">seniorzy</option>
+                        <option value="dzieci">dzieci</option>
+                    </FormControl>
+                </FormGroup>
+
 
                 <FormGroup
                     controlId="formEventDescription">
@@ -60,9 +104,22 @@ export default class AddNewForm extends React.Component {
                     <FormControl.Feedback />
                 </FormGroup>
 
+                <FormGroup controlId="formImg" type="file">
+                    <ControlLabel>Załaduj grafikę</ControlLabel>
+                    <input ref="file"
+                           type="file"
+                           defaultValue={this.state.file}
+                           onChange={this.showFile}
+                    />
+                    <Image className="event-image" src={this.state.imgSrc} responsive
+
+                    />
+
+                </FormGroup>
+
                 <FormGroup
                     controlId="formEventStartDate">
-                    <ControlLabel>Data wydarzenia:</ControlLabel>
+                    <ControlLabel>Data wydarzenithis.props.filea:</ControlLabel>
                     <FormControl
                         type="date"
                         defaultValue={this.state.start}

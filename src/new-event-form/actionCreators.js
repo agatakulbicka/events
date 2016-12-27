@@ -55,9 +55,9 @@ function addNewEventEnd() {
     }
 }
 
-export function addNewEvent(title, description, cost, start) {
-    console.log('tytuł', title)
-    console.log('data', start)
+export function addNewEvent(title, description, cost, start, target, imgSrc) {
+    console.log('imgSrc', imgSrc)
+    console.log('target', target)
     return function (dispatch) {
         dispatch(addNewEventStart())
         return fetch('http://localhost:3005/api/events', {
@@ -70,11 +70,13 @@ export function addNewEvent(title, description, cost, start) {
                 title: title,
                 cost: cost,
                 description: description,
-                start: start
+                start: start,
+                target: target,
+                imgSrc: imgSrc
             })
         })
             .then(response => response.json())
-            .then(function (title, description, cost, start) {
+            .then(function (title, description, cost, start, target, imgSrc) {
                 return dispatch(addNewEventEnd())
             })
     }
