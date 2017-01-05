@@ -4,7 +4,8 @@ import {
     SET_IMG_SOURCE,
     GET_COORDINATES_ON_CLICK,
     ADD_NEW_EVENT_START,
-    ADD_NEW_EVENT_END
+    ADD_NEW_EVENT_END,
+    SHOW_IF_IMAGE_IS_INCORRECT
 }
     from './actionTypes'
 
@@ -23,7 +24,10 @@ export function showFile(file) {
     return function (dispatch) {
         var reader = new FileReader();
         reader.readAsDataURL(file);
-        reader.onloadend = (event =>
+        reader.onloadend = (event => (file.size > 699392 || file.type !== 'image/jpeg')
+            ?
+            dispatch(showifImageIssIncorrect())
+            :
             dispatch(setImgSource(reader.result)))
     }
 }
@@ -31,7 +35,15 @@ export function showFile(file) {
 function setImgSource(imgSource) {
     return {
         type: SET_IMG_SOURCE,
-        imgSource: imgSource
+        imgSource: imgSource,
+        imageTooBig: false
+    }
+}
+
+function showifImageIssIncorrect() {
+    return {
+        type: SHOW_IF_IMAGE_IS_INCORRECT,
+        imageTooBig: true
     }
 }
 

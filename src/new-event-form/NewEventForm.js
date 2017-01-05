@@ -3,22 +3,20 @@ import {
     Grid, Row, Col,
     FormGroup, FormControl,
     HelpBlock, ControlLabel, Radio,
-    Collapse, Image, Button
+    Collapse, Image, Button, Alert
 } from 'react-bootstrap'
 import {connect} from 'react-redux'
 import {
     showFieldToInsertPayment,
     hideFieldToInsertPayment,
     showFile,
-    getCoordinatesOnClick,
-    addNewEvent
+    getCoordinatesOnClick
 } from './actionCreators'
 import  {showEventsInCity} from '../home/actionCreators'
 import './new-event-form.css'
 import GoogleMap from 'google-map-react'
 
 import Place from '../place/Place'
-import AddNewEvent from './add-new-event/AddNewEvent'
 
 const mapStateToProps = (state) => ({
     isPaymentLabelOpened: state.addNewEvents.isPaymentLabelOpened,
@@ -27,7 +25,8 @@ const mapStateToProps = (state) => ({
     place: state.addNewEvents.place,
     isPlaceMarked: state.addNewEvents.isPlaceMarked,
     cities: state.eventsCitiesData.cities,
-    currentGeoLocalisation: state.eventsCitiesData.currentGeoLocalisation
+    currentGeoLocalisation: state.eventsCitiesData.currentGeoLocalisation,
+    imageTooBig: state.addNewEvents.imageTooBig
 
 })
 
@@ -36,8 +35,7 @@ const mapDispatchToProps = (dispatch) => ({
     hideFieldToInsertPayment: () => dispatch(hideFieldToInsertPayment()),
     showFile: (file) => dispatch(showFile(file)),
     getCoordinatesOnClick: (place) => dispatch(getCoordinatesOnClick(place)),
-    showEventsInCity: (currentCity, cityLat, cityLng) => dispatch(showEventsInCity(currentCity, cityLat, cityLng)),
-    addNewEvent: (title, description, cost, start, target, imgSrc) => dispatch(addNewEvent(title, description, cost, start, target, imgSrc))
+    showEventsInCity: (currentCity, cityLat, cityLng) => dispatch(showEventsInCity(currentCity, cityLat, cityLng))
 })
 
 
@@ -57,14 +55,13 @@ class NewEventForm extends React.Component {
             cities,
             currentGeoLocalisation,
             showEventsInCity,
-            addNewEvent
+            imageTooBig
         }=this.props;
 
         return (
             <div id="addNewEventForm">
                 <Grid>
                     <Row>
-                        <AddNewEvent handleSubmit={addNewEvent}/>
                         <Col xs={12}>
                             <form>
                                 <FormGroup
@@ -152,13 +149,13 @@ class NewEventForm extends React.Component {
                                     <div>
                                         <Radio inline
                                                name="ifEventIsFree"
-                                               onClick={ (boxContent)=> hideFieldToInsertPayment(boxContent)}>
+                                               onClick={ (boxContent) => hideFieldToInsertPayment(boxContent)}>
                                             Nie
                                         </Radio>
                                         {' '}
                                         <Radio inline
                                                name="ifEventIsFree"
-                                               onClick={ ()=> showFieldToInsertPayment()}>
+                                               onClick={ () => showFieldToInsertPayment()}>
                                             Tak
                                         </Radio>
                                         <Collapse in={isPaymentLabelOpened}>
@@ -178,10 +175,16 @@ class NewEventForm extends React.Component {
 
                                 <FormGroup controlId="formImg" type="file">
                                     <ControlLabel>Załaduj grafikę</ControlLabel>
+
                                     <input type="file"
                                            onChange={(event) => showFile(event.target.files[0])}
                                     />
-                                    <Image className="event-image" src={imgSource} responsive/>
+                                    {imageTooBig ?
+                                        <Alert bsStyle="danger">Niestety zdjęcie jest za duże lub w niewłaściwym
+                                            formacie. Spróbuj jeszcze raz.</Alert>
+                                        :
+                                        <Image className="event-image" src={imgSource} responsive/>
+                                    }
                                 </FormGroup>
 
                                 <FormGroup controlId="formShortDescription">

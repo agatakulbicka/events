@@ -1,5 +1,5 @@
 import React from 'react'
-import {Row, FormGroup, ControlLabel, FormControl, Col, Panel} from 'react-bootstrap'
+import {Row, FormGroup, ControlLabel, FormControl, Col} from 'react-bootstrap'
 import GoogleMap from 'google-map-react'
 import Place from '../place/Place'
 import './home-style.css'
