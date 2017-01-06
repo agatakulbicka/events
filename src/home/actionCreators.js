@@ -52,7 +52,7 @@ export function fetchEvents() {
 export function fetchCities() {
     return function (dispatch) {
         dispatch(requestCities());
-        return fetch('http://212.59.240.158:3010/api/cities')
+        return fetch('http://91.134.142.195:3001/api/cities')
             .then(response => response.json())
             .then(cities=> dispatch(receiveCities(cities)))
     }
