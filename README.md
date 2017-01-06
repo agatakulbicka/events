@@ -15,9 +15,11 @@ The purpose of this application is providing information about upcoming IT event
 - Loopback REST API
 
 ##Exemplary use case
+
 'Strona Główna'
 - User enters the main page 'Strona Główna' where he can find information about two upcoming events (he can click on each event and go to the detailed description).
 - Below upcoming events user can find select box. He can choose the city from the list. When he choose the city, the map displays markers with events in current city.
+
 'Wydarzenia'
 - On this page all events are displayed.
 - On the top of the page user can find filter buttons which allow him to display events only for chosen age category.
@@ -25,8 +27,10 @@ The purpose of this application is providing information about upcoming IT event
 - Button 'Czytaj więcej' allows user to go to full description of the event.
 - Button with heart icon allows user to save chosen event in favourites (to local storage).
 - Button with '-' which appears after saved event, allows user to delete this event (from local storage).
+
 'Kalendarz Wydarzeń'
 - On this page user can see all events placed in the calendar.
+
 'Dodaj wydarzenie'
 - User can fill the form and add new IT event to database of events.
 
