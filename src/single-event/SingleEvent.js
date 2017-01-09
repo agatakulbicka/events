@@ -20,29 +20,36 @@ class SingleEvent extends React.Component {
             events
         }=this.props
 
+
         // We get an array with objects. After filtering we get one element array with our selected element (object). To get data from this object, we need
         //selected that we want the very first element of our single-element event array [0]
         var event = events
-            .filter(currentEvent => currentEvent.id === parseInt(this.props.params.singleEventId, 10))
-            .map(currentEvent => currentEvent)[0];
+            .filter(currentEvent => currentEvent.id === parseInt(this.props.params.singleEventId, 10))[0];
+
+
+        var eventIndex = events.indexOf(event);
+        var previousEventId = null;
+        var nextEventId = null;
+        if (eventIndex > 0) previousEventId = events[eventIndex - 1].id;
+        if (eventIndex < events.length - 1) nextEventId = events[eventIndex + 1].id;
+
         return (
             <Grid className="single-event-panel">
                 <Row>
                     <Col xs={12}>
                         <Pager>
-                            {event.id > 0 ?
-                                <LinkContainer to={`/list-events/${event.id - 1}`}>
+                            {previousEventId != null ?
+                                <LinkContainer to={`/list-events/${previousEventId}`}>
                                     <Pager.Item>&larr; Poprzednie</Pager.Item>
                                 </LinkContainer> :
                                 <Pager.Item href="/" disabled>Brak wcześniejszych</Pager.Item>}
 
                             {' '}
-                            {event.id < events.length - 1 ?
-                                <LinkContainer to={`/list-events/${event.id + 1}`}>
+                            {nextEventId != null ?
+                                <LinkContainer to={`/list-events/${nextEventId}`}>
                                     <Pager.Item>Kolejne &rarr;</Pager.Item>
                                 </LinkContainer> :
                                 <Pager.Item href="/" disabled>Brak następnych</Pager.Item>}
-
                         </Pager>
                     </Col>
                 </Row>
