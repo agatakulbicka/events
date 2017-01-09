@@ -65,12 +65,12 @@ class ListEvents extends React.Component {
                                         <Col xs={12} sm={6} md={4} lg={4} className="thumb-col"
                                              key={event.id}>
                                             <Thumbnail
-                                                src={event.img}
+                                                src={event.imgSrc}
                                                 key={event.id}>
-                                                <h3>{event.title}</h3>
-                                                <p>{event.category}</p>
+                                                <h3>{event.eventName}</h3>
+                                                <p>{event.target}</p>
                                                 <p>{event.cityName}</p>
-                                                <p>{event.date}</p>
+                                                <p>{event.eventDate}</p>
                                                 <p>{event.shortDescription}</p>
                                                 <p>
                                                     <LinkContainer to={`/list-events/${event.id}`}>

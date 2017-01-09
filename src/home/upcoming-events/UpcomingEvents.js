@@ -40,7 +40,7 @@ class UpcomingEvents extends React.Component {
                                 <ListGroupItem key={event.id}>
                                     <Link to={`/list-events/${event.id}`}>
                                         <div>
-                                            <h3>{event.title}</h3>
+                                            <h3>{event.eventName}</h3>
                                             <p>{event.start.slice(0, 10)}</p>
                                         </div>
                                     </Link>

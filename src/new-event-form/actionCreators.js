@@ -67,9 +67,9 @@ function addNewEventEnd() {
     }
 }
 
-export function addNewEvent(title, description, cost, start, target, imgSrc) {
-    console.log('imgSrc', imgSrc)
-    console.log('target', target)
+export function addNewEvent(eventName, target, cityName, address, eventDate, start, end, payment, imgSrc, coordinates, shortDescription, description, link) {
+    console.log('imgSrc', imgSrc);
+    console.log('target', target);
     return function (dispatch) {
         dispatch(addNewEventStart())
         return fetch('http://localhost:3005/api/events', {
@@ -79,16 +79,23 @@ export function addNewEvent(title, description, cost, start, target, imgSrc) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                title: title,
-                cost: cost,
-                description: description,
-                start: start,
+                eventName: eventName,
                 target: target,
-                imgSrc: imgSrc
+                cityName: cityName,
+                address: address,
+                eventDate: eventDate,
+                start: start,
+                end: end,
+                payment: payment,
+                imgSrc: imgSrc,
+                coordinates: coordinates,
+                shortDescription: shortDescription,
+                description: description,
+                link: link
             })
         })
             .then(response => response.json())
-            .then(function (title, description, cost, start, target, imgSrc) {
+            .then(function (eventName, target, cityName, address, eventDate, start, end, payment, imgSrc, coordinates, shortDescription, description, link) {
                 return dispatch(addNewEventEnd())
             })
     }

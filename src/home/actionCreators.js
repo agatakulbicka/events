@@ -43,7 +43,14 @@ export function fetchEvents() {
         dispatch(requestEvents());
         return fetch(`${process.env.PUBLIC_URL}/data/events.json`)
             .then(response => response.json())
-            .then(events => dispatch(receiveEvents(events)))
+            .then(function (events) {
+                var selectedEvents;
+                selectedEvents = events.filter(function (event) {
+                    return new Date(event.start) >= new Date();
+                })
+
+                return dispatch(receiveEvents(selectedEvents))
+            })
     }
 
 }
@@ -54,7 +61,7 @@ export function fetchCities() {
         dispatch(requestCities());
         return fetch('http://91.134.142.195:3001/api/cities')
             .then(response => response.json())
-            .then(cities=> dispatch(receiveCities(cities)))
+            .then(cities => dispatch(receiveCities(cities)))
     }
 
 }

@@ -20,8 +20,11 @@ class SingleEvent extends React.Component {
             events
         }=this.props
 
-        var event = events[this.props.params.singleEventId]
-
+        // We get an array with objects. After filtering we get one element array with our selected element (object). To get data from this object, we need
+        //selected that we want the very first element of our single-element event array [0]
+        var event = events
+            .filter(currentEvent => currentEvent.id === parseInt(this.props.params.singleEventId, 10))
+            .map(currentEvent => currentEvent)[0];
         return (
             <Grid className="single-event-panel">
                 <Row>
@@ -46,7 +49,7 @@ class SingleEvent extends React.Component {
                 {fetchingEvent ? "ładuję dane" :
 
                     <Panel key={event.id}
-                           header={event.title}
+                           header={event.eventName}
                            bsStyle="success">
                         <Row>
                             <Col xs={12}>
@@ -57,11 +60,11 @@ class SingleEvent extends React.Component {
                             <Col lg={4} xs={12}>
                                 <p>Miasto: <strong>{event.cityName}</strong></p>
                                 <p>Grupa docelowa: <strong>{event.target}</strong></p>
-                                <p>Data: <strong>{event.date}</strong></p>
+                                <p>Data: <strong>{event.eventDate}</strong></p>
                                 <p>Godzina rozpoczęcia: <strong>{event.hour}</strong></p>
                                 <p>Adres: <strong>{event.address}</strong></p>
                                 <Image className="event-img"
-                                       responsive src={event.img} alt="242x200"/>
+                                       responsive src={event.imgSrc} alt="242x200"/>
                             </Col>
                             <Col lg={8} xs={12}>
                                 <p>{event.description}</p>
@@ -74,11 +77,11 @@ class SingleEvent extends React.Component {
                                         }}
                                         center={[event.coordinates.lat, event.coordinates.lng]}
                                         zoom={11}>
-                                                <Place
-                                                    key={event.id}
-                                                    lat={event.coordinates.lat}
-                                                    lng={event.coordinates.lng}
-                                                />
+                                        <Place
+                                            key={event.id}
+                                            lat={event.coordinates.lat}
+                                            lng={event.coordinates.lng}
+                                        />
                                     </GoogleMap>
                                 </div>
                             </Col>
